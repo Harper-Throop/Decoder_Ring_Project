@@ -7,12 +7,13 @@ const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
   function polybius(input, encode = true) {
+    // your solution code here
     const lowercaseInput = input.toLowerCase();
-    
+    //return convertToCoordinate('i');
     if(encode)
-      return encodeMessage(input).join('');
+      return encodeMessage(lowercaseInput).join('');
 
-    return decodeMessage(input);
+    return decodeMessage(lowercaseInput)//.join('');
   }
 
   function encodeMessage(input){
@@ -37,6 +38,7 @@ const polybiusModule = (function () {
 
     const message = inputSubStrings.map((subString) => decodeSubString(subString));
     return message.join(' ');
+    //return realInputLength;
   }
 
   function decodeSubString(input){
@@ -79,6 +81,7 @@ const polybiusModule = (function () {
       "45": "y",
       "55": "z"
     }
+    const number = parseInt(numberString);
 
     return cipher[numberString];
   }
@@ -88,6 +91,7 @@ const polybiusModule = (function () {
     if(charCode > 9)
       charCode -= 1;
 
+    //const aCoord = (charCode / 5) + 1;  //row coord
     const aCoord = charCode % 5 === 0 ? 5 : charCode % 5; //column coord; if no remainder after dividing by 5, then a coord MUST be 5
     const bCoord = charCode % 5 ? Math.floor(charCode / 5) + 1 : charCode / 5;  //row coord
 
